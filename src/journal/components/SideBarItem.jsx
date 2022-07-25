@@ -4,20 +4,20 @@ import { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { setActiveNote } from "../../store/journal";
 
-export const SideBarItem = ({ note }) => {
+export const SideBarItem = ({ title = '', body, id, date, imageUrls = [] }) => {
 
     const dispatch = useDispatch();
 
     const onClickNote = () => {
-        dispatch(setActiveNote({...note, imageUrls: []}))
+        dispatch(setActiveNote( {title, body, id, date, imageUrls }));
     }
 
     const newTitle = useMemo(() => {
-        return note.title.length > 17 
-            ? note.title.substring(0, 15) + '...'
-            : note.title
+        return title.length > 17 
+            ? title.substring(0, 15) + '...'
+            : title
 
-    }, [note.title]);
+    }, [title]);
 
     return (
         <ListItem disablePadding>
@@ -27,7 +27,7 @@ export const SideBarItem = ({ note }) => {
                 </ListItemIcon>
                 <Grid container>
                     <ListItemText primary={newTitle} />
-                    <ListItemText secondary={note.body} />
+                    <ListItemText secondary={body} />
                 </Grid>
             </ListItemButton>
         </ListItem>

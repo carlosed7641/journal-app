@@ -11,8 +11,6 @@ export const NavBar = ({ drawerWidth = 240 }) => {
         dispatch(startLogout());
     }
     
-
-
     return (
         <AppBar
             position='fixed'
