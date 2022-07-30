@@ -21,7 +21,10 @@ export const NoteView = () => {
     const dateString = useMemo(() => {
         const newDate = new Date(date);
 
-        return newDate.toUTCString();
+        let options = { dateStyle: 'full', timeStyle: 'short', hour12: true };
+
+        return newDate.toLocaleString('es-ES', options);
+        
     }, [date])
 
     const fileInputRef = useRef();

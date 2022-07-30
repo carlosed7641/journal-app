@@ -24,12 +24,13 @@ export const startNewNote = () => {
             title: '',
             body: '',
             date: new Date().getTime(),
+            imageUrls: []
         }
 
-        const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`));
-        await setDoc(newDoc, newNote);
+        const refDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`));
+        await setDoc(refDoc, newNote);
 
-        newNote.id = newDoc.id;
+        newNote.id = refDoc.id;
 
         dispatch(addNewEmptyNote(newNote));
         dispatch(setActiveNote(newNote))
@@ -90,7 +91,7 @@ export const startDelitingNote = () => {
         const { active: note } = getState().journal;
 
         const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
-        const resp = await deleteDoc(docRef);
+        await deleteDoc(docRef);
 
         dispatch(deleteNoteById(note.id));
      
