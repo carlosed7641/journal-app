@@ -2,7 +2,7 @@ import { RegisterEmailWithEmailPassword, signInWithGoogle, loginWithEmailPasswor
 import { clearNotesLogout } from "../journal";
 import { checkingCredentials, login, logout } from "./";
 
-export const checkingAuthentication = (email, password) => {
+export const checkingAuthentication = () => {
     return async(dispatch) => {
         dispatch(checkingCredentials());
     }

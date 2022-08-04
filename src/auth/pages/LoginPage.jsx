@@ -57,6 +57,9 @@ export const LoginPage = () => {
                             placeholder="contraseña"
                             fullWidth
                             name="password"
+                            inputProps={{
+                                'data-testId': 'password'
+                            }}
                             value={password}
                             onChange={onInputChange}
                         />
@@ -75,7 +78,11 @@ export const LoginPage = () => {
                             </Button>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Button disabled={isAuthenticating} onClick={onGoogleSignIn} variant="contained" fullWidth>
+                            <Button disabled={isAuthenticating} 
+                            onClick={onGoogleSignIn} 
+                            variant="contained" 
+                            aria-label='google-btn'
+                            fullWidth>
                                 <Google />
                                 <Typography sx={{ ml: 1 }}>
                                     Google
